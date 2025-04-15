@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Home</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <main>
+        <section id="room-overview">
+            <div class="controls">
+            </div>
+            <div id="rooms-container" class="rooms-grid"></div>
+        </section>
+
+        <section id="smart-features" class="smart-features">
+            <h2>Smart Home Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>Energieverbrauch</h3>
+                    <div class="energy-chart">
+                        <canvas id="energyChart"></canvas>
+                    </div>
+                    <div class="energy-stats">
+                        <p>Tagesverbrauch: <span id="dailyEnergy">0</span> kWh</p>
+                        <p>Wochenverbrauch: <span id="weeklyEnergy">0</span> kWh</p>
+                    </div>
+                </div>
+
+                <div class="feature-card security">
+                    <h3>Sicherheit</h3>
+                    <div class="security-status">
+                        <div class="status-item">
+                            <span class="label">Alarmsystem:</span>
+                            <span class="value active">Aktiviert</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="label">Eingangstür:</span>
+                            <span class="value locked">Verriegelt</span>
+                        </div>
+                    </div>
+                    <div class="security-controls">
+                        <button id="cameras" class="neumorphic-btn" onclick="dashboard.openCameraView()">
+                            <i class="fas fa-video"></i>
+                            Kameras
+                        </button>
+                            <div class="camera-feed">
+                                <div class="camera-placeholder">
+                                    <i class="fas fa-video"></i>
+                                    <span>Live-Kamera</span>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+
+                <!-- Kamera Modal -->
+                <div id="cameraModal" class="modal">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="camera-label">Kamera 1</h3>
+                            <button class="close-btn" onclick="dashboard.closeCameraView()">
+                                <i class="fas fa-times">X</i>
+                            </button>
+                        </div>
+                        <div class="camera-view">
+                            <div class="camera-feed">
+                                <div class="camera-placeholder">
+                                    <i class="fas fa-video"></i>
+                                    <span>Live-Kamera</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="camera-controls">
+                            <button class="camera-btn active" data-camera="1">
+                                <i class="fas fa-video"></i>
+                                Kamera 1
+                            </button>
+                            <button class="camera-btn" data-camera="2">
+                                <i class="fas fa-video"></i>
+                                Kamera 2
+                            </button>
+                            <button class="camera-btn" data-camera="3">
+                                <i class="fas fa-video"></i>
+                                Kamera 3
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Wetter</h3>
+                    <div class="weather-widget">
+                        <div class="weather-main">
+                            <div class="weather-icon">
+                                <img src="resources/icons/sonnig.svg" alt="Sonnig">
+                            </div>
+                            <div class="weather-temp">
+                                <span class="current-temp">22°C</span>
+                                <span class="feels-like">Gefühlt: 24°C</span>
+                            </div>
+                        </div>
+                        <div class="weather-details">
+                            <div class="weather-detail">
+                                <span class="label">Luftfeuchtigkeit:</span>
+                                <span class="value">65%</span>
+                            </div>
+                            <div class="weather-detail">
+                                <span class="label">Wind:</span>
+                                <span class="value">12 km/h</span>
+                            </div>
+                            <div class="weather-detail">
+                                <span class="label">Niederschlag:</span>
+                                <span class="value">0%</span>
+                            </div>
+                        </div>
+                        <div class="weather-forecast">
+                            <div class="forecast-item">
+                                <span class="time">12:00</span>
+                                <img src="resources/icons/sonnig.svg" alt="Sonnig">
+                                <span class="temp">24°C</span>
+                            </div>
+                            <div class="forecast-item">
+                                <span class="time">15:00</span>
+                                <img src="resources/icons/bewölkt.svg" alt="Bewölkt">
+                                <span class="temp">23°C</span>
+                            </div>
+                            <div class="forecast-item">
+                                <span class="time">18:00</span>
+                                <img src="resources/icons/teilweise_bewölkt.svg" alt="Teilweise bewölkt">
+                                <span class="temp">20°C</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="test-area" class="test-panel">
+            <h3>Testbereich</h3>
+            <div id="test-controls">
+                <div class="test-room-selector"></div>
+                <div class="test-temperature-control"></div>
+                <div class="test-security-controls">
+                    <h4>Sicherheit</h4>
+                    <div class="security-buttons">
+                        <button id="alarmSystem" class="test-btn">
+                            <i class="fas fa-shield-alt"></i>
+                            Alarmsystem
+                        </button>
+                        <button id="doorLock" class="test-btn">
+                            <i class="fas fa-door-closed"></i>
+                            Tür
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/Room.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html> 
