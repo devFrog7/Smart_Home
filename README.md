@@ -2,6 +2,8 @@
 
 Ein webbasiertes Dashboard zur Steuerung und Überwachung von Räumen in einem Smart Home System.
 
+![Smart Home Dashboard](resources/images/SmartHome.jpeg)
+
 ## Funktionen
 
 - Verwaltung mehrerer Räume
